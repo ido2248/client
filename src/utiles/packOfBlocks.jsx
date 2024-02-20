@@ -1,11 +1,11 @@
 export default [
     '1R', '2R', '3R', '4R', '5R', '6R', '7R', '8R', '9R','10R', '11R', '12R', '13R',
-    '1R', '2R', '3R', '4R', '5R', '6R', '7R', '8R', '9R', '10R', '11R', '12R', '13R',
-    '1BLUE', '2BLUE', '3BLUE', '4BLUE', '5BLUE', '6BLUE', '7BLUE', '8BLUE', '9BLUE', '10BLUE', '11BLUE', '12BLUE', '13BLUE',
-    '1BLUE', '2BLUE', '3BLUE', '4BLUE', '5BLUE', '6BLUE', '7BLUE', '8BLUE', '9BLUE', '10BLUE', '11BLUE', '12BLUE', '13BLUE',
-    '1BLACK', '2BLACK', '3BLACK', '4BLACK', '5BLACK', '6BLACK', '7BLACK', '8BLACK', '9BLACK', '10BLACK', '11BLACK', '12BLACK', '13BLACK',
-    '1BLACK', '2BLACK', '3BLACK', '4BLACK', '5BLACK', '6BLACK', '7BLACK', '8BLACK', '9BLACK', '10BLACK', '11BLACK', '12BLACK', '13BLACK',
+    '1Re', '2Re', '3Re', '4Re', '5Re', '6Re', '7Re', '8Re', '9Re','10Re', '11Re', '12Re', '13Re',
+    '1b', '2b', '3b', '4b', '5b', '6b', '7b', '8b', '9b', '10b', '11b', '12b', '13b',
+    '1bl', '2bl', '3bl', '4bl', '5bl', '6bl', '7bl', '8bl', '9bl', '10bl', '11bl', '12bl', '13bl',
+    '1B', '2B', '3B', '4B', '5B', '6B', '7B', '8B', '9B', '10B', '11B', '12B', '13B',
+    '1BL', '2BL', '3BL', '4BL', '5BL', '6BL', '7BL', '8BL', '9BL', '10BL', '11BL', '12BL', '13BL',
     '1Y', '2Y', '3Y', '4Y', '5Y', '6Y', '7Y', '8Y', '9Y', '10Y', '11Y', '12Y', '13Y',
-    '1Y', '2Y', '3Y', '4Y', '5Y', '6Y', '7Y', '8Y', '9Y', '10Y', '11Y', '12Y', '13Y',
+    '1Ye', '2Ye', '3Ye', '4Ye', '5Ye', '6Ye', '7Ye', '8Ye', '9Ye', '10Ye', '11Ye', '12Ye', '13Ye',
     'JOKER1', 'JOKER2'
 ]

@@ -49,6 +49,15 @@ const Game = () => {
       setBordBlocksPile(bordBlocksPile)
       setDrawBlockPile(drawBlockPile)
     })
+    socket.on('updateGameState',({ gameOver, winner, turn, playerHeand1, playerHeand2, bordBlocksPile, drawBlockPile }) => {
+      gameOver && setGameOver(gameOver)
+      winner && setWinner(winner)
+      turn && setTurn(turn)
+      playerHeand1 && setPlayerHeand1(playerHeand1)
+      playerHeand2 && setPlayerHeand2(playerHeand2)
+      bordBlocksPile && setBordBlocksPile(bordBlocksPile)
+      drawBlockPile && setDrawBlockPile(drawBlockPile)
+    })
   }, [])
   const drawCard = () => {
     const popedCard =drawBlockPile.pop()
@@ -60,11 +69,8 @@ const Game = () => {
       } else {
         playerHeand1.push(popedCard, null)
 
-        if( gridColumns > 10 && playerHeand1.filter(item => item === null).length >= 3){
-          setGridColumns(gridColumns - 1)
-        } else {
-          setGridColumns(gridColumns +  1);
-        }
+        setGridColumns(gridColumns +  1);
+        
       }
       setPlayerHeand1([...playerHeand1])
     }
@@ -112,6 +118,11 @@ const Game = () => {
       if(itemIndex !== -1) {
         playerHeand1[itemIndex]= null
         setPlayerHeand1([...playerHeand1])
+        if( gridColumns > 10 && playerHeand1.filter(item => item === null).length >= 3){
+          setGridColumns(gridColumns - 1)
+          playerHeand1.splice(playerHeand1.length -2 , 2)
+          console.log(playerHeand1)
+        }
       }
       console.log(bordBlocksPile)
     }else if (playerHeand1[index] === null && item != '' && type === 'hand') {
@@ -138,7 +149,7 @@ const Game = () => {
             <div key={i} onDragStart={(e) => handleDragStart(e)} onDragEnd={handleDragEnd} onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={(e) => handleDrop(e, i, 'hand')} className='py-12 px-2 w-full h-full' draggable >{item}</div>
           ))}
         </div>
-        <div className="col-span-1 flex justify-center items-center bg-blue-700 m-2 h-full rounded-md mx-[100px]">
+        <div className="col-span-1 flex justify-center items-center bg-blue-700 m-2 h-full rounded-md mx-[100px] text-white">
           <button onClick={drawCard}>Draw Card</button>
         </div>
       </div>
