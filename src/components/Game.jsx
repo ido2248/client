@@ -15,6 +15,7 @@ const Game = () => {
   const [playerHeand2, setPlayerHeand2] = useState([])
   const [bordBlocksPile, setBordBlocksPile] = useState(new Array(60).fill(null))
   const [drawBlockPile, setDrawBlockPile] = useState([])
+  const [gridColumns, setGridColumns] = useState(10);
 
 
   useEffect(() => {
@@ -50,11 +51,23 @@ const Game = () => {
     })
   }, [])
   const drawCard = () => {
-    const poppedCard = drawBlockPile.pop()
-    if(poppedCard !== undefined){
-      const emptyIndex = playerHeand1.indexOf(null);
+    const popedCard =drawBlockPile.pop()
+    
+    if(popedCard !== undefined) {
+      const epmtyIndex = playerHeand1.findIndex(item => item === null)
+      if(epmtyIndex !== -1){
+        playerHeand1[epmtyIndex] = popedCard
+      } else {
+        playerHeand1.push(popedCard, null)
+
+        if( gridColumns > 10 && playerHeand1.filter(item => item === null).length >= 3){
+          setGridColumns(gridColumns - 1)
+        } else {
+          setGridColumns(gridColumns +  1);
+        }
+      }
+      setPlayerHeand1([...playerHeand1])
     }
-    console.log(poppedCard)
   }
 
   const handleDragStart = (e) => {
@@ -118,16 +131,17 @@ const Game = () => {
           ))}
         </div>
       </div>
-      <div className="flex justify-center items-center ">
-        <div className=" grid grid-cols-10 bg-blue-200 w-[60%] justify-center place-items-center text-center">
+      <div className="grid grid-cols-5 justify-center items-center ">
+        <div className=" col-span-1"></div>
+        <div style={{gridTemplateColumns:`repeat(${gridColumns}, minmax(0, 1fr))`}} className= "col-span-3 grid bg-blue-200 w-full justify-center place-items-center text-center">
           {playerHeand1.map((item, i) => (
             <div key={i} onDragStart={(e) => handleDragStart(e)} onDragEnd={handleDragEnd} onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={(e) => handleDrop(e, i, 'hand')} className='py-12 px-2 w-full h-full' draggable >{item}</div>
           ))}
         </div>
+        <div className="col-span-1 flex justify-center items-center bg-blue-700 m-2 h-full rounded-md mx-[100px]">
+          <button onClick={drawCard}>Draw Card</button>
+        </div>
       </div>
-      <button onClick={drawCard}>Draw Card</button>
-      <DraggableElement />
-      <TargetElement />
     </>
 
   )
