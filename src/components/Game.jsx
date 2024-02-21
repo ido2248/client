@@ -117,12 +117,13 @@ const Game = () => {
       const itemIndex = playerHeand1.findIndex(i => i === item);
       if(itemIndex !== -1) {
         playerHeand1[itemIndex]= null
-        setPlayerHeand1([...playerHeand1])
+        
         if( gridColumns > 10 && playerHeand1.filter(item => item === null).length >= 3){
           setGridColumns(gridColumns - 1)
           playerHeand1.splice(playerHeand1.length -2 , 2)
-          console.log(playerHeand1)
+          console.log(playerHeand1.length !== null)
         }
+        setPlayerHeand1([...playerHeand1])
       }
       console.log(bordBlocksPile)
     }else if (playerHeand1[index] === null && item != '' && type === 'hand') {
@@ -144,7 +145,7 @@ const Game = () => {
       </div>
       <div className="grid grid-cols-5 justify-center items-center ">
         <div className=" col-span-1"></div>
-        <div style={{gridTemplateColumns:`repeat(${gridColumns}, minmax(0, 1fr))`}} className= "col-span-3 grid bg-blue-200 w-full justify-center place-items-center text-center">
+        <div style={{gridTemplateColumns:`repeat(${gridColumns}, minmax(0, 1fr))`}} className= "col-span-3 grid grid-rows-2 bg-blue-200 w-full justify-center place-items-center text-center">
           {playerHeand1.map((item, i) => (
             <div key={i} onDragStart={(e) => handleDragStart(e)} onDragEnd={handleDragEnd} onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={(e) => handleDrop(e, i, 'hand')} className='py-12 px-2 w-full h-full' draggable >{item}</div>
           ))}
